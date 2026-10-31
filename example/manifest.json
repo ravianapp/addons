@@ -1,0 +1,37 @@
+{
+  "id": "org.ravian.example",
+  "version": "1.0.0",
+  "name": "Ravian Example",
+  "description": "Six Chopin recordings from Musopen (CC0, Internet Archive). For tests only.",
+  "ravian": 1,
+  "resources": [
+    "catalog",
+    "meta",
+    "stream"
+  ],
+  "types": [
+    "track",
+    "album"
+  ],
+  "catalogs": [
+    {
+      "type": "album",
+      "id": "new",
+      "name": "Albums"
+    },
+    {
+      "type": "track",
+      "id": "all",
+      "name": "Search",
+      "extra": [
+        {
+          "name": "search",
+          "isRequired": true
+        }
+      ]
+    }
+  ],
+  "idPrefixes": [
+    "ex-"
+  ]
+}

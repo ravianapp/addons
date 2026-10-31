@@ -1,0 +1,40 @@
+{
+  "metas": [
+    {
+      "id": "ex-ballade-1",
+      "type": "track",
+      "name": "Ballade No. 1, Op. 23",
+      "artist": "Frédéric Chopin",
+      "album": "Chopin: Ballades and Waltzes",
+      "duration": 613,
+      "trackNumber": 1
+    },
+    {
+      "id": "ex-ballade-2",
+      "type": "track",
+      "name": "Ballade No. 2, Op. 38",
+      "artist": "Frédéric Chopin",
+      "album": "Chopin: Ballades and Waltzes",
+      "duration": 494,
+      "trackNumber": 2
+    },
+    {
+      "id": "ex-ballade-3",
+      "type": "track",
+      "name": "Ballade No. 3, Op. 47",
+      "artist": "Frédéric Chopin",
+      "album": "Chopin: Ballades and Waltzes",
+      "duration": 507,
+      "trackNumber": 3
+    },
+    {
+      "id": "ex-ballade-4",
+      "type": "track",
+      "name": "Ballade No. 4, Op. 52",
+      "artist": "Frédéric Chopin",
+      "album": "Chopin: Ballades and Waltzes",
+      "duration": 762,
+      "trackNumber": 4
+    }
+  ]
+}

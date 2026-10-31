@@ -1,10 +1,18 @@
 # Ravian addons
 
-The list of addons that the Ravian app shows in Settings → Sources → Addons. A person reviews each addon before it goes
+The list of addons that the Ravian app shows in Settings → Sources → Reviewed addons. A person reviews each addon before it goes
 in the list.
 
 An addon is a music source for Ravian: an HTTPS server or a folder of JSON files. It sends data, not code. Ravian runs
 nothing that an addon sends.
+
+## Make an addon
+
+- [docs/guide.md](docs/guide.md): make an addon, test it in Ravian, put it online, submit it.
+- [docs/protocol.md](docs/protocol.md): the protocol reference.
+- [template/](template): an addon server to copy (Node, no packages; local server or Vercel).
+- [example/](example): a static addon to copy (GitHub Pages).
+- [tools/check.py](tools/check.py): the checker. [tools/schema/](tools/schema): the exact rules.
 
 ## Submit an addon
 
@@ -13,7 +21,7 @@ nothing that an addon sends.
 3. A workflow checks the addon again and writes the result in the issue.
 4. A reviewer accepts the addon or tells you why not.
 
-The protocol is in `tools/schema/` and in the Ravian addon spec. `tools/check.py` uses only the Python standard library.
+`tools/check.py` uses only the Python standard library.
 
 ## Rules
 

@@ -1,0 +1,9 @@
+{
+  "name": "ravian-addon-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Ravian addon server to copy and change.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node server.js" }
+}
