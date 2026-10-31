@@ -10,7 +10,7 @@ You need Python 3 (for the checker). For a server addon, you also need Node 18 o
 | Kind | Use it when | Host |
 |---|---|---|
 | Static | The songs do not change often. Search answers only the words that you prepare. | GitHub Pages, any static host |
-| Server | The addon reads another service, or searches any text. | Vercel, or your own server |
+| Server | The addon reads another service, or searches any text. | Your own server; Vercel only for users outside Iran |
 
 ## 2. Make a static addon
 
@@ -61,6 +61,10 @@ To test on a phone, put the addon online first (section 5).
 3. The addon URL is the Pages address of the folder, for example `https://<user>.github.io/<repo>`.
 
 ### Vercel (server)
+
+**Warning:** do not use Vercel for users in Iran. On 2026-10-31, from a network in Iran, each Vercel site that we tried
+answered 403 "Vercel Security Checkpoint", and the Vercel CLI could not log in. Most Ravian users are in Iran. Use your
+own server behind Cloudflare for them.
 
 1. Run `npx vercel@latest login`.
 2. In the template folder, run `npx vercel@latest deploy --prod`. `vercel.json` and `api/index.js` are already there.

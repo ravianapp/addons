@@ -32,7 +32,8 @@ Store builds of Ravian need HTTPS. Use a debug build for tests on your computer.
 
 ## Put it on Vercel
 
-The steps are in [docs/guide.md](../docs/guide.md), section 5.
+The steps are in [docs/guide.md](../docs/guide.md), section 5. Vercel does not answer users in Iran: read the warning
+there first.
 
 ## Put it on a server
 
