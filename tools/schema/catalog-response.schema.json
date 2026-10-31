@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalog-response.schema.json",
+  "title": "Catalog or search answer (spec section 2)",
+  "type": "object",
+  "required": ["metas"],
+  "properties": {
+    "metas": {
+      "type": "array",
+      "items": { "$ref": "meta.schema.json" }
+    }
+  }
+}

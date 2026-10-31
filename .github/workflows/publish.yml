@@ -1,0 +1,39 @@
+# Builds, signs and publishes the list on each push to main and once a day. The daily run finds each addon whose
+# manifest changed after its review: that addon leaves the list, and an issue names it.
+name: Publish the list
+on:
+  push: { branches: [main] }
+  schedule: [{ cron: '17 3 * * *' }]
+  workflow_dispatch:
+permissions: { contents: read }
+concurrency: { group: pages, cancel-in-progress: false }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # The environment "registry" holds the secret REGISTRY_KEY. Allow only the branch main in its settings.
+    environment: registry
+    permissions: { contents: read, issues: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node tools/build.js
+        env: { REGISTRY_KEY: '${{ secrets.REGISTRY_KEY }}' }
+      - name: Name the addons that left the list
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          [ -s public/changed.txt ] || exit 0
+          open=$(gh issue list --label changed --state open --json number --jq '.[0].number')
+          if [ -n "$open" ]; then gh issue comment "$open" --body-file public/changed.txt
+          else gh issue create --title "Addons left the list" --label changed --body-file public/changed.txt; fi
+      - run: rm public/changed.txt
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: public }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: { pages: write, id-token: write }
+    environment: { name: github-pages, url: '${{ steps.deploy.outputs.page_url }}' }
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

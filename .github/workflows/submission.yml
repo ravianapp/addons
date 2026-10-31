@@ -1,0 +1,25 @@
+# Checks a new addon from the issue form "Submit an addon", and writes the result in the issue.
+# The issue text is user input: the script reads it only from an environment variable.
+name: Check a submission
+on:
+  issues: { types: [opened, edited] }
+permissions: { contents: read, issues: write }
+jobs:
+  check:
+    if: contains(github.event.issue.labels.*.name, 'submission')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Check the addon
+        env:
+          BODY: '${{ github.event.issue.body }}'
+          NUMBER: '${{ github.event.issue.number }}'
+          GH_TOKEN: '${{ github.token }}'
+        run: |
+          url=$(printf '%s\n' "$BODY" | grep -m1 -oE '^https://[A-Za-z0-9.-]+(:[0-9]+)?(/[A-Za-z0-9._~%/=-]*)?$' || true)
+          if [ -z "$url" ]; then gh issue comment "$NUMBER" --body "No addon URL found. Give one https:// URL in the field Addon URL."; exit 0; fi
+          { echo "Checked: \`$url\`"; echo; echo '```'; python3 tools/check.py "$url" 2>&1 | tail -40; echo '```'
+            echo; echo "If the review accepts it, add this file:"; echo; echo '```'; node tools/build.js entry "$url" 2>&1; echo '```'; } > result.md
+          gh issue comment "$NUMBER" --body-file result.md

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stream-response.schema.json",
+  "title": "Stream answer (spec section 2)",
+  "type": "object",
+  "required": ["streams"],
+  "properties": {
+    "streams": {
+      "type": "array",
+      "items": { "$ref": "stream.schema.json" }
+    }
+  }
+}

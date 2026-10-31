@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "meta.schema.json",
+  "title": "Meta (spec section 4)",
+  "type": "object",
+  "required": ["id", "type", "name"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "enum": ["track", "album", "artist", "playlist"] },
+    "name": { "type": "string" },
+    "artist": { "type": "string" },
+    "album": { "type": "string" },
+    "duration": { "type": "number", "minimum": 0 },
+    "trackNumber": { "type": "integer", "minimum": 1 },
+    "year": { "type": "integer" },
+    "cover": { "type": "string", "pattern": "^https://" },
+    "tracks": {
+      "type": "array",
+      "items": { "$ref": "#" }
+    },
+    "credits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "names"],
+        "properties": {
+          "role": { "type": "string" },
+          "names": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "releaseType": { "enum": ["album", "single", "ep"] },
+    "fans": { "type": "integer", "minimum": 0 },
+    "fansFrom": { "type": "string" },
+    "description": { "type": "string" },
+    "albums": { "type": "array", "items": { "$ref": "#" } },
+    "playlists": { "type": "array", "items": { "$ref": "#" } },
+    "related": { "type": "array", "items": { "$ref": "#" } }
+  }
+}

@@ -1,0 +1,20 @@
+name: Report an addon
+description: Tell the reviewers about a problem with an addon in the list.
+labels: [report]
+body:
+  - type: input
+    id: addon
+    attributes:
+      label: Addon
+      description: The addon's id or URL.
+    validations: { required: true }
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Problem
+      options: [It does not work, Content without the right to give it, Harmful or illegal content, Other]
+    validations: { required: true }
+  - type: textarea
+    id: details
+    attributes:
+      label: Details

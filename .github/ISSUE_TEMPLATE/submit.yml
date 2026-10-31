@@ -1,0 +1,32 @@
+name: Submit an addon
+description: Ask for an addon to be in the Ravian list.
+labels: [submission]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Addon URL
+      description: The https:// address of the addon, without manifest.json.
+      placeholder: https://addon.example.org
+    validations: { required: true }
+  - type: textarea
+    id: about
+    attributes:
+      label: About the addon
+      description: What it gives, and where its music comes from.
+    validations: { required: true }
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      description: An email address for questions and takedown requests.
+    validations: { required: true }
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Rules
+      options:
+        - label: I have the right to give the content of this addon.
+          required: true
+        - label: I read the rules in the README of this repository.
+          required: true
