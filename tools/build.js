@@ -46,6 +46,8 @@ const index = Buffer.from(JSON.stringify({
   addons,
   // Manifest ids that the apps turn off, also when the user added the addon by its URL.
   blocked: JSON.parse(readFileSync('blocked.json', 'utf8')),
+  // The lowest app version code that may use online sources (app.json). An older app asks the user to update.
+  ...JSON.parse(readFileSync('app.json', 'utf8')),
 }, null, 2) + '\n');
 
 mkdirSync('public', { recursive: true });

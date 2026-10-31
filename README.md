@@ -52,6 +52,9 @@ Open an issue with the form "Report an addon". In the app, each listed addon has
 
 To remove an addon, delete its file. To turn it off on every phone, also add its id to `blocked.json`.
 
+To force an update, set `minAndroid` or `minIos` in `app.json` to the lowest version code that may use online sources.
+An older app then shows "Update Ravian to use online sources". Its local library keeps working.
+
 ## Set up the repository (once)
 
 1. Settings → Environments: make `registry`. Allow only the branch `main`. Add the secret `REGISTRY_KEY` (the private
