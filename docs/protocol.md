@@ -142,6 +142,17 @@ One object for all types. Leave out a field that does not apply.
 | `headers` | object | optional HTTP headers for the request |
 | `mime` | string | optional, for example `audio/mpeg` |
 | `bitrate` | integer | optional, kbit/s. Ravian plays the first stream. With "Save data" on, it plays the lowest bitrate. |
+| `video` | boolean | optional: the stream has a picture, a music video (section 4.1). |
+
+### 4.1 Music video
+
+A music video is a second form of a track, not an item of its own. Put its streams in the track's stream answer, after
+the audio streams, with `"video": true`. Send MP4 (H.264 and AAC) or HLS, and at least one audio stream.
+
+- Ravian plays the audio. When the track has a video stream, Now playing shows a Video switch; it plays the video from
+  the same spot, and a second tap goes back to the audio.
+- The video stream is the first one, or with "Save data" the lowest `bitrate`.
+- The next track plays as audio, and downloads take the audio only.
 
 Give stream links that expire, for example after 24 hours (the template does this). A link that never expires plays
 your source for anybody who has it.

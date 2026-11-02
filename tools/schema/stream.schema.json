@@ -11,6 +11,7 @@
       "additionalProperties": { "type": "string" }
     },
     "mime": { "type": "string" },
-    "bitrate": { "type": "integer", "minimum": 1 }
+    "bitrate": { "type": "integer", "minimum": 1 },
+    "video": { "type": "boolean" }
   }
 }
