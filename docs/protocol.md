@@ -32,7 +32,8 @@ answer names the song: `title` is required, `artist` and `cover` are optional. R
 addon's host. Use it to count and limit each user's use. Two addons get different values for the same user, so it cannot
 match users across addons. Do not keep it longer than your privacy text says.
 
-**Types** (fixed): `track`, `album`, `artist`, `playlist`.
+**Types** (fixed): `track`, `album`, `artist`, `playlist`, and for spoken audio `podcast`, `audiobook`, `episode`
+(section 3.1). `radio` is reserved. Ravian skips an item of a type that it does not know.
 
 ## 2. Manifest
 
@@ -74,7 +75,8 @@ match users across addons. Do not keep it longer than your privacy text says.
 | `artist`, any id, with `search` | text | artists | Search, and the artist page |
 | `album` / `dastgah` | a dastgah key: `shur`, `segah`, `chahargah`, `mahur`, `homayun`, `nava`, `rast-panjgah` | albums in that dastgah | the dastgah cards of Browse |
 
-The song search is the first other catalog with `search`. It is never `album` / `dastgah`.
+The song search is the first other catalog with `search`. It is never `album` / `dastgah`, `podcast` or `audiobook`.
+A catalog of `podcast` with `search` answers the podcast search.
 
 ### 2.1 Settings page
 
@@ -94,7 +96,7 @@ One object for all types. Leave out a field that does not apply.
 | Field | Type | For | Note |
 |---|---|---|---|
 | `id` | string | all | starts with one of `idPrefixes` |
-| `type` | string | all | `track`, `album`, `artist`, `playlist` |
+| `type` | string | all | `track`, `album`, `artist`, `playlist`, `podcast`, `audiobook`, `episode` |
 | `name` | string | all | the title, or the album, artist or playlist name |
 | `artist` | string | track, album, playlist | the display artist; for a playlist, its owner or source |
 | `description` | string | album, playlist | optional, only in a `meta` answer |
@@ -111,6 +113,24 @@ One object for all types. Leave out a field that does not apply.
 | `albums` | Meta[] | artist | optional, only in a `meta` answer: the releases, newest first |
 | `playlists` | Meta[] | artist | optional, only in a `meta` answer |
 | `related` | Meta[] | artist, playlist | optional, only in a `meta` answer: similar artists, or similar playlists |
+
+### 3.1 Podcasts and audiobooks
+
+| Type | What | `tracks` in a `meta` answer |
+|---|---|---|
+| `podcast` | a show | its episodes, **newest first** |
+| `audiobook` | a book | its chapters, **in reading order** |
+| `episode` | one podcast episode or one book chapter; it plays | none |
+
+- Use the same keys as for music: `artist` is the host or the author, and `credits` names the narrator
+  (`{ "role": "Narrator", "names": [...] }`).
+- An `episode` can have `released` (an ISO date, for example `2026-10-30`) and `album` (the name of its show or book).
+- The stream of an episode uses the track path: `{base}/stream/track/{id}.json`.
+- A `meta` answer has all episodes of a show. For more than 500, send the newest 500 and `"hasMore": true`.
+- Ravian shows `podcast` and `audiobook` catalogs under the content chip "Podcasts & books", not on Home. It keeps the
+  position of each episode and has a speed control for episodes.
+- Cache the sources that you read. The iTunes Search API allows about 20 requests a minute for each address.
+- Keep catalogs with no required extra few: each one is one request when the screen opens.
 
 ## 4. Stream
 

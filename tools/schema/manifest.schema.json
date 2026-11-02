@@ -16,7 +16,7 @@
     },
     "types": {
       "type": "array",
-      "items": { "enum": ["track", "album", "artist", "playlist"] }
+      "items": { "enum": ["track", "album", "artist", "playlist", "podcast", "audiobook", "episode", "radio"] }
     },
     "catalogs": {
       "type": "array",
@@ -24,7 +24,7 @@
         "type": "object",
         "required": ["type", "id", "name"],
         "properties": {
-          "type": { "enum": ["track", "album", "artist", "playlist"] },
+          "type": { "enum": ["track", "album", "artist", "playlist", "podcast", "audiobook", "episode", "radio"] },
           "id": { "type": "string" },
           "name": { "type": "string" },
           "scope": { "enum": ["persian", "international"] },

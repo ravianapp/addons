@@ -6,13 +6,15 @@
   "required": ["id", "type", "name"],
   "properties": {
     "id": { "type": "string" },
-    "type": { "enum": ["track", "album", "artist", "playlist"] },
+    "type": { "enum": ["track", "album", "artist", "playlist", "podcast", "audiobook", "episode", "radio"] },
     "name": { "type": "string" },
     "artist": { "type": "string" },
     "album": { "type": "string" },
     "duration": { "type": "number", "minimum": 0 },
     "trackNumber": { "type": "integer", "minimum": 1 },
     "year": { "type": "integer" },
+    "released": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}" },
+    "hasMore": { "type": "boolean" },
     "cover": { "type": "string", "pattern": "^https://" },
     "tracks": {
       "type": "array",

@@ -132,7 +132,7 @@ def usable(m):
 
 
 def first_track(pairs):
-    return next((m["id"] for _, m in pairs if usable(m) and m["type"] == "track"), None)
+    return next((m["id"] for _, m in pairs if usable(m) and m["type"] in ("track", "episode")), None)
 
 
 def run(source, rel, schema_name, prefixes, problems):
