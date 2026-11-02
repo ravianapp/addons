@@ -28,6 +28,7 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "scope": { "enum": ["persian", "international"] },
+          "ranked": { "type": "boolean" },
           "extra": {
             "type": "array",
             "items": {

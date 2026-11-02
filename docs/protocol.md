@@ -65,6 +65,7 @@ match users across addons. Do not keep it longer than your privacy text says.
 | `catalogs` | yes | The rows of the addon. A catalog with a required `search` extra makes the addon searchable. |
 | `idPrefixes` | no | Each Meta id starts with one of them. |
 | `scope` | no | `persian` or `international`, on the manifest or on one catalog. Ravian's content chips (All, Persian, International) show a catalog only in its scope. A catalog's own `scope` wins. Search is never filtered by scope. |
+| `ranked` | no | On one catalog: `true` when its items are in rank order, as a chart. Ravian numbers them on Home. A `track` catalog shows on Home as a list of songs, 4 to a column. |
 | `configurable` | no | `true` when the addon has a settings page at `{base}/configure` (section 2.1). |
 
 **Catalogs with a fixed meaning.** Ravian finds them by `type` and `id`:
