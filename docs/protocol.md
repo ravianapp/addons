@@ -134,6 +134,16 @@ One object for all types. Leave out a field that does not apply.
 - Cache the sources that you read. The iTunes Search API allows about 20 requests a minute for each address.
 - Keep catalogs with no required extra few: each one is one request when the screen opens.
 
+### 3.2 Genres
+
+- A catalog of `podcast` or `audiobook` can have a `genre` extra with its options:
+  `{ "name": "genre", "options": ["History", "Comedy"] }`. Ravian shows the options as chips and asks
+  `{base}/catalog/{type}/{id}/genre={value}.json` for one.
+- A `podcast` or an `audiobook` can have `genres: ["History", ...]`. Ravian shows them as tags on its page, and Home
+  suggests shows in the genres that the user's followed shows have most often.
+- Use the same words in `options` and in `genres`. Ravian has Persian names for Apple's podcast genres and for common
+  book genres (Poetry, Mystery, Adventure, ...).
+
 ## 4. Stream
 
 | Field | Type | Note |

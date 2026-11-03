@@ -36,7 +36,8 @@
               "required": ["name"],
               "properties": {
                 "name": { "type": "string" },
-                "isRequired": { "type": "boolean" }
+                "isRequired": { "type": "boolean" },
+                "options": { "type": "array", "items": { "type": "string" } }
               }
             }
           }
