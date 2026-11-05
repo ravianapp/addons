@@ -128,6 +128,8 @@ One object for all types. Leave out a field that does not apply.
 - An `episode` can have `released` (an ISO date, for example `2026-10-30`) and `album` (the name of its show or book).
 - The stream of an episode uses the track path: `{base}/stream/track/{id}.json`.
 - A `meta` answer has all episodes of a show. For more than 500, send the newest 500 and `"hasMore": true`.
+- Send `"serial": true` on a `podcast` whose episodes are heard in sequence (the feed's `<itunes:type>serial`). Keep
+  `tracks` newest first. Ravian then lists the show oldest first, and Play starts at the oldest episode not heard.
 - Ravian shows `podcast` and `audiobook` catalogs under their own content chips and under All, not under Music. A show
   or a book opens its own page. Ravian keeps the position of each episode and has speed and skip 15 s for episodes.
 - Send `description` on each episode: the show page shows 2 lines of it. Keep it short (Ava cuts at 400 characters).
